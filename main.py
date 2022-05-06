@@ -1,9 +1,19 @@
 import cv2
+import time
+from sys import platform
 
 
 
+if platform == "linux" or platform == "linux2":
+    print("Linux Os spotted")
+elif platform == "darwin":
+    print("Mac Os spotted")
+elif platform == "win32":
+    print("Windows spotted")
+
+time.sleep(5)
 #img = cv2.imread('test.png')
-img = cv2.imread('tf.jpg')
+img = cv2.imread('test.jpg')
 gs = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 gs_plus = img.astype(int) + 100
@@ -14,20 +24,12 @@ gs_cont = img.astype(int) * 2
 gs_cont[gs_cont>255] = 255
 gs_cont = gs_cont.astype('uint8')
 
-gs_neg = 255 - gs.astype(int)
-gs_neg[gs_neg>255] = 255
-gs_neg = gs_neg.astype('uint8')
-
 th_val = 60
 ret1,threshold = cv2.threshold(gs,th_val,255,cv2.THRESH_BINARY)
 
 th_range_1 = 100
 th_range_2 = 200
 inrange_th = cv2.inRange(gs, th_range_1, th_range_2)
-
-edgy = cv2.Canny(img,th_range_1,th_range_2)
-
-blur = cv2.GaussianBlur(img,(5,5),0)
 
 #noise = cv2.randn(img,)
 
@@ -38,24 +40,11 @@ rheight = 600
 rwidth = 800
 
 #Show Image List
-show_imagename = ['Original Image',
-                  'GrayScale',
-                  'Plus',
-                  'Contrast',
-                  'negative',
-                  'Threshold : ' + str(th_val), 
-                  'inrange_threshold : ' + str(th_range_1) + ' and ' + str(th_range_2) , 
-                  'Edges', 
-                  'BLURRING']
-show_image = [img,
-              gs,
-              gs_plus,
-              gs_cont,
-              gs_neg,
-              threshold,
-              inrange_th,
-              edgy,
-              blur]
+show_imagename = [
+                  'Enhanced', 
+                  ]
+show_image = [ gs_cont
+              ]
 
 n_showimg = len(show_image)
 
