@@ -4,15 +4,8 @@ from sys import platform
 
 
 
-if platform == "linux" or platform == "linux2":
-    print("Linux Os spotted")
-elif platform == "darwin":
-    print("Mac Os spotted")
-elif platform == "win32":
-    print("Windows spotted")
 
-time.sleep(5)
-#img = cv2.imread('test.png')
+# time.sleep(5)
 img = cv2.imread('test.jpg')
 gs = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
