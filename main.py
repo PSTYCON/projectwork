@@ -40,16 +40,10 @@ rheight = 600
 rwidth = 800
 
 #Show Image List
-show_imagename = [
-                  'Enhanced', 
-                  ]
-show_image = [ gs_cont
-              ]
-
+show_imagename = [ 'Enhanced', ]
+show_image = [ gs_cont]
+              
 n_showimg = len(show_image)
-
-
-
 #Image Showing Sequencing
 for k in range (0,n_showimg):
     if resize == False:
@@ -57,11 +51,6 @@ for k in range (0,n_showimg):
         cv2.resizeWindow(show_imagename[k],rwidth,rheight)    
     cv2.imshow(show_imagename[k],show_image[k])
 
-# SHOWING IMAGE ALGORITHMS ---------------------------------------------------------------------- END
-
-
-
-
-
+# SHOWING IMAGE ALGORITHMS---------------------------------------------------------------------------------- END
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+#cv2.destroyAllWindows()
